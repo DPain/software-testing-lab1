@@ -1,8 +1,11 @@
 package roman;
 
 import static org.junit.Assert.*;
+import java.util.Arrays;
+import java.util.Collection;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runners.Parameterized.Parameters;
 
 public class TestRomanConverter {
   private RomanConverter app;
@@ -14,19 +17,17 @@ public class TestRomanConverter {
   }
 
   @Test
-  public void testFromRoman() {
-    String input = "X";
+  public void testFromRoman(String input, int expected) {
     int output = app.fromRoman(input);
     System.out.println(output);
-    assert(output == 10);
+    assert(output == expected);
   }
   
   @Test
-  public void testToRoman() {
-    int input = 10;
+  public void testToRoman(int input, String expected) {
     String output = app.toRoman(input);
     System.out.println(output);
-    assert(output.equals("X"));
+    assert(output.equals(expected));
   }
 
 }
