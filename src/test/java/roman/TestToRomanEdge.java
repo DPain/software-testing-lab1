@@ -10,7 +10,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 
-public class TestToRomanLarge {
+public class TestToRomanEdge {
   private RomanConverter app;
 
   @Before
@@ -19,12 +19,20 @@ public class TestToRomanLarge {
     app = new RomanConverter();
   }
 
-  @Test
-  public void testToRoman() {
-    System.out.println(String.format("input: %d, expected: %s", 4000, "IV"));
+  @Test(expected = IllegalArgumentException.class)
+  public void testToRomanLarge() {
+    System.out.println(String.format("input: %d, expected: %s", 4000, "IllegalArgumentException"));
     String output = app.toRoman(4000);
     System.out.println(String.format("output: %s", output));
     assert (output.equals("IV"));
+  }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void testToRomanSmall() {
+    System.out.println(String.format("input: %d, expected: %s", -1, "IllegalArgumentException"));
+    String output = app.toRoman(-1);
+    System.out.println(String.format("output: %s", output));
+    assert (output.equals("0"));
   }
 
 }
