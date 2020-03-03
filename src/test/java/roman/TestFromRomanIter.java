@@ -59,7 +59,7 @@ public class TestFromRomanIter {
     assert (output == expected);
   }
 
-  @Test
+  @Test(expected = IllegalArgumentException.class)
   public void testFromRomanFileLower() {
     int output = app.fromRoman(input.toLowerCase());
     System.out.println(String.format("output: %d", output));
