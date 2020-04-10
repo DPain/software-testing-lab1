@@ -1,5 +1,7 @@
 package roman;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
 import java.util.Collection;
 import org.junit.Before;
@@ -44,7 +46,8 @@ public class TestFromRoman {
   public void testFromRoman() {
     int output = app.fromRoman(input);
     System.out.println(String.format("output: %d", output));
-    assert (output == expected);
+    assertEquals(expected, output);
+
   }
 
 }

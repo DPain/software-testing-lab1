@@ -56,13 +56,18 @@ public class TestFromRomanIter {
   public void testFromRomanFile() {
     int output = app.fromRoman(input);
     System.out.println(String.format("output: %d", output));
-    assert (output == expected);
+    assertEquals(expected, output);
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void testFromRomanFileLower() {
-    int output = app.fromRoman(input.toLowerCase());
-    System.out.println(String.format("output: %d", output));
-    assert (output == expected);
+    try{
+    	int output = app.fromRoman(input.toLowerCase());
+        System.out.println(String.format("output: %d", output));
+        assertNotEquals(expected, output);
+    }catch (IllegalArgumentException e) {
+    	assertEquals(String.format("Invalid Roman numeral: %s", input.toLowerCase()), e.getMessage());
+    }
+
   }
 }

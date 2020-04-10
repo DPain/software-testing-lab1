@@ -1,5 +1,8 @@
 package roman;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
 import java.util.Arrays;
 import java.util.Collection;
 import org.junit.Before;
@@ -31,10 +34,14 @@ public class TestFromRomanEdge {
     app = new RomanConverter();
   }
   
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void testToRomanEdge() {
     System.out.println(String.format("input: %s, expected: %s", input, "IllegalArgumentException"));
-    app.fromRoman(input);
+    try{
+    	assertNotEquals(0, app.fromRoman(input));
+    }catch (IllegalArgumentException e) {
+    	assertEquals(String.format("Invalid Roman numeral: %s", input), e.getMessage());
+    }
   }
   
 }

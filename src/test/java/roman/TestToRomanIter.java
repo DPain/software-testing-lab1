@@ -55,7 +55,7 @@ public class TestToRomanIter {
   public void testToRomanFile() {
     String output = app.toRoman(input);
     System.out.println(String.format("output: %s", output));
-    assert (output.equals(expected));
+    assertEquals(expected, output);
   }
 
 }
